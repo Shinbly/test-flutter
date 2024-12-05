@@ -1,16 +1,15 @@
 # popina_test
 
-A new Flutter project.
+By habit I started the documentation in english so all documentation will be in English.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+The goal is to get some information from a JSON file and display it in a list.
+the information look like a list of order and each order has a list of items.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+it's specificaly requested to use a state management approach to separate all data management.
+for that i will use riverpod package.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
