@@ -61,4 +61,21 @@ class Item {
 
   /// the color of the item
   final Color color;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Item &&
+        other.id == id &&
+        other.name == name &&
+        other.currency == currency &&
+        other.price == price &&
+        other.color.value == color.value;
+  }
+
+  @override
+  String toString() {
+    return 'Item{id: $id, name: $name, currency: $currency, price: $price, color: $color}';
+  }
 }

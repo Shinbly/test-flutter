@@ -10,16 +10,20 @@ class RestaurantApi {
     Uri url = Uri.parse(orderUrl);
     try {
       Map<String, dynamic> orders = await HttpService.get(url);
-      List<Order> ordersList = [];
-      if (orders.containsKey("orders")) {
-        ordersList = (orders["orders"] as List<dynamic>)
-            .map((e) => Order.fromjson(e))
-            .toList();
-      }
-      return ordersList;
+      return parseOrders(orders);
     } catch (e) {
       print("error while fetching the orders $e");
       rethrow;
     }
+  }
+
+  static List<Order> parseOrders(Map<String, dynamic> orders) {
+    List<Order> ordersList = [];
+    if (orders.containsKey("orders")) {
+      ordersList = (orders["orders"] as List<dynamic>)
+          .map((e) => Order.fromjson(e))
+          .toList();
+    }
+    return ordersList;
   }
 }

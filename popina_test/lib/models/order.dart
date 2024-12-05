@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:popina_test/extensions/orderExtension.dart';
 import 'package:popina_test/models/item.dart';
 
 /// this represent the model of the order entity parsed via json.
@@ -68,4 +69,21 @@ class Order {
 
   /// the list of items in the order
   final List<Item> items;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Order &&
+        other.id == id &&
+        other.table == table &&
+        other.guests == guests &&
+        other.date == date &&
+        other.items.deepEquals(items);
+  }
+
+  @override
+  String toString() {
+    return "Order(id: $id, table: $table, guests: $guests, date: $date, items: [${items.join(", ")}])";
+  }
 }
