@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:popina_test/component/total_price.dart';
 import 'package:popina_test/extensions/date_extension.dart';
 import 'package:popina_test/models/order.dart';
 
@@ -22,7 +23,7 @@ class OrderItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.01),
               blurRadius: 1,
               offset: const Offset(2, 2),
             ),
@@ -31,21 +32,21 @@ class OrderItem extends StatelessWidget {
         child: ListTile(
           onTap: onTap,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(4),
           ),
-          tileColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.05),
+          tileColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.01),
           leading: AspectRatio(
             aspectRatio: 1,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(
                 child: Text(
                   order.table.toString(),
                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: Theme.of(context).colorScheme.onSecondary,
                       ),
                 ),
               ),
@@ -62,30 +63,12 @@ class OrderItem extends StatelessWidget {
           ),
           trailing: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children:
-                order.totalPrice.entries.map((MapEntry<String, int> entry) {
-              final String price = (entry.value / 100).toStringAsFixed(2);
-              String integer = price.split('.')[0];
-              String decimal = ".${price.split('.')[1]}";
-              return Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: integer,
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    TextSpan(
-                      text: '$decimal  ${entry.key}',
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                            fontWeight: FontWeight.w300,
-                          ),
-                    ),
-                  ],
-                ),
-              );
-            }).toList(growable: false),
+            children: order.totalPrice.entries
+                .map((MapEntry<String, int> entry) => TotalPrice(
+                      currency: entry.key,
+                      price: entry.value,
+                    ))
+                .toList(growable: false),
           ),
         ),
       ),

@@ -87,6 +87,16 @@ class Order {
     return "Order(id: $id, table: $table, guests: $guests, date: $date, items: [${items.join(", ")}])";
   }
 
+  /// this return a map of the quantity of each item id
+  Map<int, int> get quantityByItemId {
+    Map<int, int> quantityByItemId = {};
+
+    for (Item item in items) {
+      quantityByItemId.update(item.id, (value) => value + 1, ifAbsent: () => 1);
+    }
+    return quantityByItemId;
+  }
+
   /// this return the total price of the order by currency
   /// this could be a int but since the Currency is an element of item,
   /// the format allow to have multiple currency in the same order

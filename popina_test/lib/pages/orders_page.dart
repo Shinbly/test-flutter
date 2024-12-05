@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:popina_test/component/order_list.dart';
 import 'package:popina_test/models/order.dart';
+import 'package:popina_test/pages/table_page.dart';
 import 'package:popina_test/providers/order_provider.dart';
 
 ///this page is the page that will render all of the différents tables's order in the restaurant
@@ -36,7 +37,11 @@ class OrdersPage extends StatelessWidget {
           ),
           body: Center(
             child: OrderList(
-              onTap: (order) {},
+              onTap: (order) {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => TablePage(order: order),
+                ));
+              },
               orders: orders.requireValue,
             ),
           ),
