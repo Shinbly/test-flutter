@@ -9,7 +9,7 @@ part 'order_provider.g.dart';
 /// This will create a provider named `orderProvider`
 /// which will cache the result of this function.
 @riverpod
-Future<List<Order>> futureOrderList(Ref ref) async {
+Future<List<Order>> orderList(Ref ref) async {
   // Using package:http, we fetch a the orders from the API.
   return await RestaurantApi.getOrders();
 }
