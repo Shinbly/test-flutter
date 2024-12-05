@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:popina_test/pages/table_page.dart';
+import 'package:popina_test/pages/orders_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 void main() {
@@ -38,10 +38,12 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white).copyWith(
+          primary: Color.fromRGBO(233, 98, 101, 1),
+        ),
         useMaterial3: true,
       ),
-      home: const TablePage(),
+      home: const OrdersPage(),
     );
   }
 }

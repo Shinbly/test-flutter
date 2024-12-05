@@ -86,4 +86,16 @@ class Order {
   String toString() {
     return "Order(id: $id, table: $table, guests: $guests, date: $date, items: [${items.join(", ")}])";
   }
+
+  /// this return the total price of the order by currency
+  /// this could be a int but since the Currency is an element of item,
+  /// the format allow to have multiple currency in the same order
+  Map<String, int> get totalPrice {
+    Map<String, int> total = {};
+    for (Item item in items) {
+      total.update(item.currency, (value) => value + item.price,
+          ifAbsent: () => item.price);
+    }
+    return total;
+  }
 }
