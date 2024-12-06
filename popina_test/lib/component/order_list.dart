@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:popina_test/component/order_item.dart';
 import 'package:popina_test/models/order.dart';
-import 'package:popina_test/providers/order_provider.dart';
 
 ///this widget will represent the list of order Given by the provider
 class OrderList extends StatelessWidget {

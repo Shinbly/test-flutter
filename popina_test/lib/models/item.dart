@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:popina_test/extensions/colorExtension.dart';
+import 'package:popina_test/extensions/color_extension.dart';
 
 /// this represent the model of the item entity parsed via json.
 /// the item entity is the entity that represent the item in the list of items in the order
@@ -77,5 +77,14 @@ class Item {
   @override
   String toString() {
     return 'Item{id: $id, name: $name, currency: $currency, price: $price, color: $color}';
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+        name.hashCode ^
+        currency.hashCode ^
+        price.hashCode ^
+        color.hashCode;
   }
 }

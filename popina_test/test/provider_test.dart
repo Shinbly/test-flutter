@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:popina_test/extensions/orderExtension.dart';
+import 'package:popina_test/extensions/order_extension.dart';
 import 'package:popina_test/models/order.dart';
 import 'package:popina_test/providers/order_provider.dart';
 import 'package:popina_test/services/api/restaurant_api.dart';

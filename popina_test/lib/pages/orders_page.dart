@@ -27,8 +27,8 @@ class OrdersPage extends StatelessWidget {
           return const CircularProgressIndicator();
         }
         if (orders.hasError) {
-          return Center(
-              child: const Text('Oops, something unexpected happened'));
+          return const Center(
+              child: Text('Oops, something unexpected happened'));
         }
         return Scaffold(
           appBar: AppBar(

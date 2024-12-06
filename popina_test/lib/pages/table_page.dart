@@ -5,7 +5,10 @@ import 'package:popina_test/models/item.dart';
 import 'package:popina_test/models/order.dart';
 
 class TablePage extends StatelessWidget {
-  const TablePage({super.key, required this.order});
+  const TablePage({
+    required this.order,
+    super.key,
+  });
 
   final Order order;
 
@@ -62,7 +65,7 @@ class TablePage extends StatelessWidget {
                     color: item.color,
                   );
                 },
-              ).toList(growable: false),
+              ),
             ],
           ),
         ),

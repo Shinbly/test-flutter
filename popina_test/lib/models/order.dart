@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:popina_test/extensions/orderExtension.dart';
+import 'package:popina_test/extensions/order_extension.dart';
 import 'package:popina_test/models/item.dart';
 
 /// this represent the model of the order entity parsed via json.
@@ -108,4 +108,12 @@ class Order {
     }
     return total;
   }
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      table.hashCode ^
+      guests.hashCode ^
+      date.hashCode ^
+      items.hashCode;
 }

@@ -36,7 +36,7 @@ class TotalPrice extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: '$decimal  ${currency}',
+              text: '$decimal  $currency',
               style: textStyle?.copyWith(
                 fontWeight: FontWeight.w300,
               ),

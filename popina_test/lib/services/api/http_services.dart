@@ -1,6 +1,7 @@
 import "dart:convert";
 import "dart:io";
 
+import "package:flutter/foundation.dart";
 import "package:http/http.dart" as http;
 
 ///this is the abstract class for all http services
@@ -22,9 +23,11 @@ abstract class HttpService {
   }) async {
     client ??= http.Client();
     final http.Response res = await client.get(url, headers: headers);
-    print(
-        "[HTTP] : ${res.request?.method} ${res.request?.url.host}/${res.request?.url.port} ${res.request?.url.path} [${res.statusCode}]");
-    print(res.body);
+    if (kDebugMode) {
+      print(
+          "[HTTP] : ${res.request?.method} ${res.request?.url.host}/${res.request?.url.port} ${res.request?.url.path} [${res.statusCode}]");
+      print(res.body);
+    }
     if (res.statusCode != 200) {
       throw HttpException(
         "error while fetching the data statusCode : [${res.statusCode}] : ${res.body}",

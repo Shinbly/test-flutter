@@ -4,12 +4,12 @@ import 'package:popina_test/component/total_price.dart';
 ///this widget represent the item that display the information of an item in the order
 class ItemItem extends StatelessWidget {
   const ItemItem({
-    super.key,
     required this.quantity,
     required this.name,
     required this.price,
     required this.currency,
     required this.color,
+    super.key,
   });
 
   final int quantity;

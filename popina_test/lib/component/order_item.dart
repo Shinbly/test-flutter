@@ -54,7 +54,7 @@ class OrderItem extends StatelessWidget {
           ),
           title: Row(
             children: [
-              Icon(Icons.face_outlined),
+              const Icon(Icons.face_outlined),
               Text('${order.guests}'),
             ],
           ),
