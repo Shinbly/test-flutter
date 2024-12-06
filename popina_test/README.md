@@ -13,3 +13,10 @@ it's specificaly requested to use a state management approach to separate all da
 for that i will use riverpod package.
 
 
+I started from a default starter project, I first added state managment with riverpod and then I added the data model and the service to get the data from the JSON file.
+
+I also made a little test to test the provider that get the data from the url.
+
+I the made the UI to display the data. I used a ListView.builder to display the list of orders and a ListView.builder to display the list of items for each order.
+
+Then I made test to verify that the data is displayed in the widgets . 
