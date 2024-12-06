@@ -1,4 +1,4 @@
-import 'package:http/http.dart';
+import 'package:flutter/foundation.dart';
 import 'package:popina_test/models/order.dart';
 import 'package:popina_test/services/api/http_services.dart';
 
@@ -12,7 +12,9 @@ class RestaurantApi {
       Map<String, dynamic> orders = await HttpService.get(url);
       return parseOrders(orders);
     } catch (e) {
-      print("error while fetching the orders $e");
+      if (kDebugMode) {
+        print("error while fetching the orders $e");
+      }
       rethrow;
     }
   }

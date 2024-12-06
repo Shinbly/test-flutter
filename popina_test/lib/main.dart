@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:popina_test/pages/orders_page.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 void main() {
   runApp(
@@ -39,10 +38,10 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white).copyWith(
-          primary: Color.fromRGBO(81, 170, 231, 1),
-          secondary: Color.fromRGBO(233, 98, 101, 1),
+          primary: const Color.fromRGBO(81, 170, 231, 1),
+          secondary: const Color.fromRGBO(233, 98, 101, 1),
         ),
-        textTheme: TextTheme(),
+        textTheme: const TextTheme(),
         useMaterial3: true,
       ),
       home: const OrdersPage(),
