@@ -24,25 +24,52 @@ class OrdersPage extends StatelessWidget {
         // ...
         final AsyncValue<List<Order>> orders = ref.watch(orderListProvider);
         if (orders.isLoading) {
-          return const CircularProgressIndicator();
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Commandes'),
+              centerTitle: true,
+            ),
+            body: Center(child: CircularProgressIndicator()),
+          );
         }
         if (orders.hasError) {
-          return const Center(
-              child: Text('Oops, something unexpected happened'));
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Commandes'),
+              centerTitle: true,
+            ),
+            body: Center(
+              child: Text('Oops, something unexpected happened'),
+            ),
+          );
+        }
+        if (orders.requireValue.isEmpty) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Commandes'),
+              centerTitle: true,
+            ),
+            body: Center(
+              child: Text('No orders yet'),
+            ),
+          );
         }
         return Scaffold(
           appBar: AppBar(
             title: Text('${orders.requireValue.length} Commandes'),
             centerTitle: true,
           ),
-          body: Center(
-            child: OrderList(
-              onTap: (order) {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => TablePage(order: order),
-                ));
-              },
-              orders: orders.requireValue,
+          body: RefreshIndicator(
+            onRefresh: () => ref.refresh(orderListProvider.future),
+            child: Center(
+              child: OrderList(
+                onTap: (order) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => TablePage(order: order),
+                  ));
+                },
+                orders: orders.requireValue,
+              ),
             ),
           ),
         );
